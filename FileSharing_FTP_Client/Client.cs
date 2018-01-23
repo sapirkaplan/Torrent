@@ -13,10 +13,9 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 
-
-namespace Client
+namespace FileSharing_FTP_Client
 {
-    public partial class Form1 : Form
+    public partial class Client : Form
     {
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace Client
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public Form1()
+        public Client()
         {
             //InitializeComponent();
         }
@@ -55,7 +54,7 @@ namespace Client
             {
                 Server = (IFTPServer)Activator.GetObject(typeof(IFTPServer), string.Format("tcp://{0}:{1}/FTPServerAPP/ftpserver.svr", ServerIPValue.Text, ServerPortValue.Text));
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 connected = false;
                 EventLogger.Logger(ex, "Client - GetConnection");
@@ -66,7 +65,7 @@ namespace Client
                 connected = false;
                 ChannelServices.UnregisterChannel(channel);
                 MessageBox.Show("Cannot Connect to the Server", "FTP File Sharing", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return connected;
+                return connected ;
             }
 
             try
@@ -157,7 +156,7 @@ namespace Client
                         upload.Add(data);
                     }
 
-                    Server.Upload(MachineInfo.GetJustIP(), upload);
+                    Server.Upload(MachineInfo.GetJustIP(),upload);
                 }
             }
             catch (RemotingException re)
@@ -223,7 +222,7 @@ namespace Client
                 }
                 else
                 {
-                    if (Server != null)
+                    if(Server != null)
                         Server.Disconnect(MachineInfo.GetJustIP());
                     e.Cancel = false;
                 }
@@ -305,7 +304,7 @@ namespace Client
             if (save.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
                 System.IO.File.WriteAllBytes(save.FileName, file);
-                MessageBox.Show(ServerFileListView.SelectedItems[0].SubItems[2].Text + " has been downloaded.", "FTP File Sharing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ServerFileListView.SelectedItems[0].SubItems[2].Text +" has been downloaded.", "FTP File Sharing", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             save.Dispose();
 

@@ -49,14 +49,24 @@ public class DBService : IDBService
 
     public void addUserToOnlineUsersTable(string userName, int port, string ip)
     {
-        conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBTorrent"].ConnectionString);
-        conn.Open();
-        string insertUser = "Insert into Online_Users (User_Name,Ip,Port) values (@uName,@ip,@port)";
-        SqlCommand com = new SqlCommand(insertUser, conn);
-        com.Parameters.AddWithValue("uName", userName);
-        com.Parameters.AddWithValue("ip", ip);
-        com.Parameters.AddWithValue("port", port);
-        com.ExecuteNonQuery();
-        conn.Close();
+        try
+        {
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBTorrent"].ConnectionString);
+            conn.Open();
+            string insertUser = "Insert into Online_Users (User_Name,Ip,Port) values (@uName,@ip,@port)";
+            SqlCommand com = new SqlCommand(insertUser, conn);
+            com.Parameters.AddWithValue("uName", userName);
+            com.Parameters.AddWithValue("ip", ip);
+            com.Parameters.AddWithValue("port", port);
+            com.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("IOException source: {0}", ex.Source);
+        }
+        finally
+        {
+            conn.Close();
+        }
     }
 }

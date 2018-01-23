@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Client
+namespace FileSharing_FTP_Client
 {
     static class Program
     {
@@ -15,17 +14,19 @@ namespace Client
         [STAThread]
         static void Main()
         {
+            Console.ReadLine();
+            
             if (File.Exists("MyConfig.xml"))
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new Client());
             }
             else
             {
-                ConfigurationWPF conf = new ConfigurationWPF();
-                conf.ShowDialog();
+                new ConfigurationWPF();
             }
+
         }
     }
 }
