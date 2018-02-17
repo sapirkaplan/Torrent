@@ -13,7 +13,7 @@ namespace FileSharing_FTP_Client
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("blbla");
+            Console.WriteLine("blb");
             Console.WriteLine("hihihi");
 
             Application.EnableVisualStyles();
