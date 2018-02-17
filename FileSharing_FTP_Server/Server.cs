@@ -24,7 +24,7 @@ namespace FileSharing_FTP_Server
         {
             InitializeComponent();
 
-            ServerIPValue.Text = MachineInfo.GetJustIP();            
+            ServerIPValue.Text = MachineInfo.GetJustIP();
         }
 
         /// <summary>
@@ -46,12 +46,12 @@ namespace FileSharing_FTP_Server
 
             FTPServer.Logger = Logger;
 
-            ChannelServices.RegisterChannel(channel,false);
+            ChannelServices.RegisterChannel(channel, false);
             RemotingConfiguration.ApplicationName = "FTPServerAPP";
-            RemotingConfiguration.RegisterWellKnownServiceType(typeof(FTPServer),"ftpserver.svr", WellKnownObjectMode.Singleton);
+            RemotingConfiguration.RegisterWellKnownServiceType(typeof(FTPServer), "ftpserver.svr", WellKnownObjectMode.Singleton);
 
-            Logger.Text += Environment.NewLine+ "***** TCP Channel has been published... *****";
-            
+            Logger.Text += Environment.NewLine + "***** TCP Channel has been published... *****";
+
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace FileSharing_FTP_Server
                 return;
             }
             EstablishRemote();
-            ServerPortValue.ReadOnly  = true;
+            ServerPortValue.ReadOnly = true;
             StartServer.Enabled = false;
             ServerStatusMessage.Text = "Server has been started...";
         }
@@ -92,7 +92,7 @@ namespace FileSharing_FTP_Server
         /// <param name="e"></param>
         private void Server_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure ? ", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes )
+            if (MessageBox.Show("Are you sure ? ", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.Yes)
             {
                 e.Cancel = true;
             }
@@ -102,7 +102,7 @@ namespace FileSharing_FTP_Server
             }
 
 
-          
+
         }
 
     }

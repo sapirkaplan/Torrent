@@ -28,7 +28,7 @@ namespace FileSharing_FTP_Client
         /// </summary>
         public Client()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace FileSharing_FTP_Client
             {
                 Server = (IFTPServer)Activator.GetObject(typeof(IFTPServer), string.Format("tcp://{0}:{1}/FTPServerAPP/ftpserver.svr", ServerIPValue.Text, ServerPortValue.Text));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 connected = false;
                 EventLogger.Logger(ex, "Client - GetConnection");
@@ -65,7 +65,7 @@ namespace FileSharing_FTP_Client
                 connected = false;
                 ChannelServices.UnregisterChannel(channel);
                 MessageBox.Show("Cannot Connect to the Server", "FTP File Sharing", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return connected ;
+                return connected;
             }
 
             try
@@ -156,7 +156,7 @@ namespace FileSharing_FTP_Client
                         upload.Add(data);
                     }
 
-                    Server.Upload(MachineInfo.GetJustIP(),upload);
+                    Server.Upload(MachineInfo.GetJustIP(), upload);
                 }
             }
             catch (RemotingException re)
@@ -222,7 +222,7 @@ namespace FileSharing_FTP_Client
                 }
                 else
                 {
-                    if(Server != null)
+                    if (Server != null)
                         Server.Disconnect(MachineInfo.GetJustIP());
                     e.Cancel = false;
                 }
@@ -304,15 +304,11 @@ namespace FileSharing_FTP_Client
             if (save.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
                 System.IO.File.WriteAllBytes(save.FileName, file);
-                MessageBox.Show(ServerFileListView.SelectedItems[0].SubItems[2].Text +" has been downloaded.", "FTP File Sharing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ServerFileListView.SelectedItems[0].SubItems[2].Text + " has been downloaded.", "FTP File Sharing", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             save.Dispose();
 
         }
 
-        private void ServerIPValue_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

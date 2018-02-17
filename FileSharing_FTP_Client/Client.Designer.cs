@@ -44,7 +44,6 @@
             this.Refresh = new System.Windows.Forms.Button();
             this.StartClient = new System.Windows.Forms.Button();
             this.ServerIPValue = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.ServerStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,24 +193,13 @@
             this.ServerIPValue.Size = new System.Drawing.Size(228, 26);
             this.ServerIPValue.TabIndex = 20;
             this.ServerIPValue.Text = "192.168.1.2";
-            this.ServerIPValue.TextChanged += new System.EventHandler(this.ServerIPValue_TextChanged);
             this.ServerIPValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ServerIPValue_KeyPress);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(603, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1030, 665);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.ServerIPValue);
             this.Controls.Add(this.ServerStatus);
             this.Controls.Add(this.ServerFileListView);
@@ -254,6 +242,5 @@
         private System.Windows.Forms.Button StartClient;
         private System.Windows.Forms.TextBox ServerIPValue;
         private System.Windows.Forms.ToolStripStatusLabel ClientStatusMessage;
-        private System.Windows.Forms.Button button1;
     }
 }

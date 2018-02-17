@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Business_Layer
 {
-    public delegate void PostedDataHandler(string user , byte[] data);
+    public delegate void PostedDataHandler(string user, byte[] data);
     public delegate void UpdateHandler(string user);
 
     [Serializable()]
@@ -18,8 +18,8 @@ namespace Business_Layer
 
     public interface IFTPServer
     {
-        void Upload(string user,List<UploadData> files);
-        void Download(string user,string filename, out byte[] file);
+        void Upload(string user, List<UploadData> files);
+        void Download(string user, string filename, out byte[] file);
         void GetFiles(out List<FileInfo> files);
         void Connect(string user);
         void Disconnect(string user);
@@ -29,7 +29,7 @@ namespace Business_Layer
 
     }
 
-    public abstract class PostedData : System.MarshalByRefObject 
+    public abstract class PostedData : System.MarshalByRefObject
     {
         public void Server_PostData(string user, byte[] data)
         {

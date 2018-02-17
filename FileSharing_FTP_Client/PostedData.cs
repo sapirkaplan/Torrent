@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace FileSharing_FTP_Client
 {
-    public class PostedData : Business_Layer.PostedData 
+    public class PostedData : Business_Layer.PostedData
     {
-        public event EventHandler RefreshList;  
+        public event EventHandler RefreshList;
 
         public override void ImplementedPostData(string user, byte[] data)
         {
@@ -28,7 +28,7 @@ namespace FileSharing_FTP_Client
             if (RefreshList != null)
                 RefreshList(this, null);
 
-            
+
         }
     }
 }

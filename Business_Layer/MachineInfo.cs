@@ -40,18 +40,18 @@ namespace Business_Layer
         {
             IPEndPoint result = null;
 
-             ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select IPAddress From Win32_NetworkAdapterConfiguration");
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select IPAddress From Win32_NetworkAdapterConfiguration");
 
-             foreach (ManagementObject obj in searcher.Get())
-             {
-                 if (obj["IPAddress"] != null)
-                 {
-                     string[] ip = (string[])obj["IPAddress"];
-                     result = new IPEndPoint(IPAddress.Parse(ip[0]), 9898);
-                     break;
-                 }
-             }
-        
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                if (obj["IPAddress"] != null)
+                {
+                    string[] ip = (string[])obj["IPAddress"];
+                    result = new IPEndPoint(IPAddress.Parse(ip[0]), 9898);
+                    break;
+                }
+            }
+
             return result;
         }
 
