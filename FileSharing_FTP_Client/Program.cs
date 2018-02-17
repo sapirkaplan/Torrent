@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using ClientApp.ServiceReference1;
+using System.IO;
+
 
 namespace FileSharing_FTP_Client
 {
@@ -13,9 +16,11 @@ namespace FileSharing_FTP_Client
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("blb");
-            Console.WriteLine("hihihi");
-
+            if (!File.Exists("MyConfig.xml"))
+            {
+                 Configuration conf= new Configuration();
+                 conf.ShowDialog();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Client());

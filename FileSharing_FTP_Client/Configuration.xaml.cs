@@ -15,30 +15,17 @@ using System.Windows.Shapes;
 using ClientApp.ServiceReference1;
 using System.Xml;
 
-namespace ClientApp
+
+namespace Client
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ConfigurationWPF.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Configuration : Window
     {
-        public MainWindow()
+        public Configuration()
         {
             InitializeComponent();
-            
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (checkAuthentication())
-            {
-                writeToXmlFile();
-                MessageBox.Show("Success");
-                addUserToOnlineUsersTable();
-            }
-            else
-                MessageBox.Show("Error");
-            
         }
 
         public void writeToXmlFile()
@@ -92,7 +79,19 @@ namespace ClientApp
             string ip = IPTextBox.Text;
 
             DBServiceClient srv = new DBServiceClient();
-            srv.addUserToOnlineUsersTable(userName,port,ip);
+            srv.addUserToOnlineUsersTable(userName, port, ip);
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (checkAuthentication())
+            {
+                writeToXmlFile();
+                MessageBox.Show("Success");
+                addUserToOnlineUsersTable();
+            }
+            else
+                MessageBox.Show("Error");
         }
     }
 }

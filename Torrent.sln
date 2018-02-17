@@ -36,6 +36,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing_FTP_Server", "FileSharing_FTP_Server\FileSharing_FTP_Server.csproj", "{6D158642-1908-4E7F-926E-EAE1BF44A814}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharing_FTP_Client", "FileSharing_FTP_Client\FileSharing_FTP_Client.csproj", "{0B5B43E6-C5EB-4BFF-ADFC-9CE2F2D13D52}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D548A08C-B27D-458E-A66F-0B67CBC0A810} = {D548A08C-B27D-458E-A66F-0B67CBC0A810}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
