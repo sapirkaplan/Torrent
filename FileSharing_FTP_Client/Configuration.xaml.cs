@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClientApp.ServiceReference1;
 using System.Xml;
 using System.Xaml;
+using FileSharing_FTP_Client.ServiceReference1;
 
 
 namespace FileSharing_FTP_Client
@@ -36,29 +36,10 @@ namespace FileSharing_FTP_Client
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("connectionDetails");
 
-            xmlWriter.WriteStartElement("ip");
-            xmlWriter.WriteString(IPTextBox.Text);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.WriteStartElement("port");
-            xmlWriter.WriteString(PortTextBox.Text);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.WriteStartElement("username");
-            xmlWriter.WriteString(UsernameTextBox.Text);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.WriteStartElement("password");
-            xmlWriter.WriteString(PasswordTextBox.Text);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.WriteStartElement("publicFolder");
-            xmlWriter.WriteString(PublicFolderTextBox.Text);
-            xmlWriter.WriteEndElement();
-
-            xmlWriter.WriteStartElement("downloadFolder");
-            xmlWriter.WriteString(DownloadFolderTextBox.Text);
-            xmlWriter.WriteEndElement();
+            xmlWriter.WriteAttributeString("ip", IPTextBox.Text);
+            xmlWriter.WriteAttributeString("port", PortTextBox.Text);
+            xmlWriter.WriteAttributeString("username", UsernameTextBox.Text);
+            xmlWriter.WriteAttributeString("password", PasswordTextBox.Text);
 
             xmlWriter.WriteEndDocument();
             xmlWriter.Close();
@@ -74,23 +55,13 @@ namespace FileSharing_FTP_Client
 
         }
 
-        public void addUserToOnlineUsersTable()
-        {
-            string userName = UsernameTextBox.Text;
-            int port = int.Parse(PortTextBox.Text);
-            string ip = IPTextBox.Text;
-
-            DBServiceClient srv = new DBServiceClient();
-            srv.addUserToOnlineUsersTable(userName, port, ip);
-        }
-
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (checkAuthentication())
             {
                 writeToXmlFile();
                 MessageBox.Show("Success");
-                addUserToOnlineUsersTable();
+                this.Close();
             }
             else
                 MessageBox.Show("Error");

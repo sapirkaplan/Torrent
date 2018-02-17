@@ -111,10 +111,6 @@
       <Project>{18ead09a-3fd8-42dc-b8c3-030ee366a835}</Project>
       <Name>Business_Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClientApp\ClientApp.csproj">
-      <Project>{2b26f3ba-9204-4f20-b3b3-0e15bd861f70}</Project>
-      <Name>ClientApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Configuration.xaml">

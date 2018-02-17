@@ -24,7 +24,7 @@ public class DBService : IDBService
     {
         try
         {
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBTorrent"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiniTorrentDBConnectionString"].ConnectionString);
             conn.Open();
             string checkUser = "Select * from Users where User_Name like @userName and Password like @password";
             comm = new SqlCommand(checkUser,conn);
@@ -42,16 +42,34 @@ public class DBService : IDBService
         {
             conn.Close();
         }
-        
-        
+    }
 
+    public void removeUserFromOnlineUsersTable(string userName, int port, string ip)
+    {
+        try
+        {
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiniTorrentDBConnectionString"].ConnectionString);
+            conn.Open();
+            string removeUser = "DELETE FROM Online_Users WHERE User_Name = @uName";
+            SqlCommand com = new SqlCommand(removeUser, conn);
+            com.Parameters.AddWithValue("uName", userName);
+            com.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("IOException source: {0}", ex.Source);
+        }
+        finally
+        {
+            conn.Close();
+        }
     }
 
     public void addUserToOnlineUsersTable(string userName, int port, string ip)
     {
         try
         {
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBTorrent"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiniTorrentDBConnectionString"].ConnectionString);
             conn.Open();
             string insertUser = "Insert into Online_Users (User_Name,Ip,Port) values (@uName,@ip,@port)";
             SqlCommand com = new SqlCommand(insertUser, conn);

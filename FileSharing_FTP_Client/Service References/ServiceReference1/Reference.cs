@@ -32,6 +32,12 @@ namespace FileSharing_FTP_Client.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBService/addUserToOnlineUsersTable", ReplyAction="http://tempuri.org/IDBService/addUserToOnlineUsersTableResponse")]
         System.Threading.Tasks.Task addUserToOnlineUsersTableAsync(string userName, int port, string ip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBService/removeUserFromOnlineUsersTable", ReplyAction="http://tempuri.org/IDBService/removeUserFromOnlineUsersTableResponse")]
+        void removeUserFromOnlineUsersTable(string userName, int port, string ip);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBService/removeUserFromOnlineUsersTable", ReplyAction="http://tempuri.org/IDBService/removeUserFromOnlineUsersTableResponse")]
+        System.Threading.Tasks.Task removeUserFromOnlineUsersTableAsync(string userName, int port, string ip);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace FileSharing_FTP_Client.ServiceReference1 {
         
         public System.Threading.Tasks.Task addUserToOnlineUsersTableAsync(string userName, int port, string ip) {
             return base.Channel.addUserToOnlineUsersTableAsync(userName, port, ip);
+        }
+        
+        public void removeUserFromOnlineUsersTable(string userName, int port, string ip) {
+            base.Channel.removeUserFromOnlineUsersTable(userName, port, ip);
+        }
+        
+        public System.Threading.Tasks.Task removeUserFromOnlineUsersTableAsync(string userName, int port, string ip) {
+            return base.Channel.removeUserFromOnlineUsersTableAsync(userName, port, ip);
         }
     }
 }

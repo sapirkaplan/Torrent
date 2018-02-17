@@ -24,6 +24,12 @@
   <wsdl:message name="IDBService_addUserToOnlineUsersTable_OutputMessage">
     <wsdl:part name="parameters" element="tns:addUserToOnlineUsersTableResponse" />
   </wsdl:message>
+  <wsdl:message name="IDBService_removeUserFromOnlineUsersTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeUserFromOnlineUsersTable" />
+  </wsdl:message>
+  <wsdl:message name="IDBService_removeUserFromOnlineUsersTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removeUserFromOnlineUsersTableResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDBService">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBService/DoWork" message="tns:IDBService_DoWork_InputMessage" />
@@ -36,6 +42,10 @@
     <wsdl:operation name="addUserToOnlineUsersTable">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBService/addUserToOnlineUsersTable" message="tns:IDBService_addUserToOnlineUsersTable_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBService/addUserToOnlineUsersTableResponse" message="tns:IDBService_addUserToOnlineUsersTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeUserFromOnlineUsersTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBService/removeUserFromOnlineUsersTable" message="tns:IDBService_removeUserFromOnlineUsersTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBService/removeUserFromOnlineUsersTableResponse" message="tns:IDBService_removeUserFromOnlineUsersTable_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDBService" type="tns:IDBService">
@@ -60,6 +70,15 @@
     </wsdl:operation>
     <wsdl:operation name="addUserToOnlineUsersTable">
       <soap:operation soapAction="http://tempuri.org/IDBService/addUserToOnlineUsersTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUserFromOnlineUsersTable">
+      <soap:operation soapAction="http://tempuri.org/IDBService/removeUserFromOnlineUsersTable" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

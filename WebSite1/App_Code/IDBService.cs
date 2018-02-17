@@ -17,4 +17,7 @@ public interface IDBService
 
     [OperationContract]
     void addUserToOnlineUsersTable(string userName, int port, string ip);
+
+    [OperationContract]
+    void removeUserFromOnlineUsersTable(string userName, int port, string ip);
 }

@@ -13,7 +13,7 @@ public partial class regrestion : System.Web.UI.Page
     {
         if (IsPostBack)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBTorrent"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiniTorrentDBConnectionString"].ConnectionString);
             conn.Open();
             conn.Close();
 
@@ -27,7 +27,7 @@ public partial class regrestion : System.Web.UI.Page
             //string connectionString = "Server=./SQLEXPRESS;Database=DBTorrent;";
             ////string connectionString = "Data Source=localhost;Initial Catalog=DBTorrent;";
             //SqlConnection conn = new SqlConnection(connectionString);
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBTorrent"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiniTorrentDBConnectionString"].ConnectionString);
             conn.Open();
             string insertUser = "Insert into Users (User_Name,Password) values (@uName,@pass)";
             SqlCommand com = new SqlCommand(insertUser, conn);

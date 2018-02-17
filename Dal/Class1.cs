@@ -15,7 +15,7 @@ namespace Dal
         {
             try
             {
-                string bla = Dal.Properties.Settings.Default.DBTorrent;
+                string bla = Dal.Properties.Settings.Default.MiniTorrentDB;
                 SqlConnection conn = new SqlConnection(bla);
                 conn.Open();
                 string insertUser = "Insert into Users (User_Name,Password) values (@uName,@pass)";

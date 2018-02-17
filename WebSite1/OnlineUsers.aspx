@@ -17,7 +17,7 @@
                 <asp:BoundField DataField="Port" HeaderText="Port" SortExpression="Port" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBTorrent %>" SelectCommand="SELECT * FROM [Online_Users]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:MiniTorrentDBConnectionString %>" SelectCommand="SELECT * FROM [Online_Users]"></asp:SqlDataSource>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Refresh" />
         <br />
     

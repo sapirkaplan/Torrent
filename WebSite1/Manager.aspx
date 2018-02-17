@@ -40,7 +40,7 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
             <br />
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DBTorrent %>" DeleteCommand="DELETE FROM [Users] WHERE [User_Name] = @original_User_Name AND [Password] = @original_Password" InsertCommand="INSERT INTO [Users] ([User_Name], [Password]) VALUES (@User_Name, @Password)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Users]" UpdateCommand="UPDATE [Users] SET [Password] = @Password WHERE [User_Name] = @original_User_Name AND [Password] = @original_Password">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:MiniTorrentDBConnectionString %>" DeleteCommand="DELETE FROM [Users] WHERE [User_Name] = @original_User_Name AND [Password] = @original_Password" InsertCommand="INSERT INTO [Users] ([User_Name], [Password]) VALUES (@User_Name, @Password)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Users]" UpdateCommand="UPDATE [Users] SET [Password] = @Password WHERE [User_Name] = @original_User_Name AND [Password] = @original_Password">
                 <DeleteParameters>
                     <asp:Parameter Name="original_User_Name" Type="String" />
                     <asp:Parameter Name="original_Password" Type="String" />

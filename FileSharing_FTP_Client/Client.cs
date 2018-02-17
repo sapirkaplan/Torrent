@@ -12,6 +12,8 @@ using System.Net;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
+using FileSharing_FTP_Client.ServiceReference1;
+using System.Xml;
 
 namespace FileSharing_FTP_Client
 {
@@ -204,6 +206,16 @@ namespace FileSharing_FTP_Client
             ShareFolder.Enabled = true;
             Refresh.Enabled = true;
 
+            XmlDocument doc = new XmlDocument();
+            doc.Load("MyConfig.xml");
+            XmlElement root = doc.DocumentElement;
+
+            string userName = root.Attributes["username"].Value;
+            int port = int.Parse(root.Attributes["port"].Value);
+            string ip = root.Attributes["ip"].Value;
+            DBServiceClient srv = new DBServiceClient();
+            srv.addUserToOnlineUsersTable(userName, port, ip);
+
         }
 
 
@@ -222,9 +234,19 @@ namespace FileSharing_FTP_Client
                 }
                 else
                 {
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load("MyConfig.xml");
+                    XmlElement root = doc.DocumentElement;
+
+                    string userName = root.Attributes["username"].Value;
+                    int port = int.Parse(root.Attributes["port"].Value);
+                    string ip = root.Attributes["ip"].Value;
+                    DBServiceClient srv = new DBServiceClient();
+                    srv.removeUserFromOnlineUsersTable(userName, port, ip);
                     if (Server != null)
                         Server.Disconnect(MachineInfo.GetJustIP());
                     e.Cancel = false;
+
                 }
             }
             catch (Exception ex)
