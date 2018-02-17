@@ -14,9 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientApp.ServiceReference1;
 using System.Xml;
+using System.Xaml;
 
 
-namespace Client
+namespace FileSharing_FTP_Client
 {
     /// <summary>
     /// Interaction logic for ConfigurationWPF.xaml
@@ -25,11 +26,12 @@ namespace Client
     {
         public Configuration()
         {
-            InitializeComponent();
+          InitializeComponent();
         }
 
         public void writeToXmlFile()
         {
+
             XmlWriter xmlWriter = XmlWriter.Create("MyConfig.xml");
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("connectionDetails");
