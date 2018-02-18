@@ -15,6 +15,7 @@ namespace FileSharing_FTP_Client
         [STAThread]
         static void Main()
         {
+            Console.WriteLine( "vjjvk");
             if (!File.Exists("MyConfig.xml"))
             {
                  Configuration conf= new Configuration();
